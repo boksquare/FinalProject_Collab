@@ -1,5 +1,8 @@
 package CIS3368.finalproject.controllers;
 
+import com.mashape.unirest.http.HttpResponse;
+import com.mashape.unirest.http.Unirest;
+import org.json.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -11,9 +14,22 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class MainController {
+
+    @RequestMapping( value = "/graph", method = RequestMethod.GET)
+    public ModelAndView view(){
+        ModelAndView mv = new ModelAndView("graph");
+
+        ChartDataController chartDataObject = new ChartDataController();
+        List<List<Map<Object, Object>>> chartDataList = chartDataObject.getChartList();
+        mv.addObject("dataPointsList", chartDataList);
+
+        return mv;
+    }
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public ModelAndView get(@RequestParam("name") String name) {
@@ -56,6 +72,7 @@ public class MainController {
         } catch (Exception e) {
             return "Exception: " + e.getMessage();
         }
+
 
     }
 

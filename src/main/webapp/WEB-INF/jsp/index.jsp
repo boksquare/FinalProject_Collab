@@ -20,6 +20,10 @@
     </div>
 
 
+    <div>
+        <a href="/graph">Open Graph</a>
+    </div>
+
 </body>
 
 </html>
