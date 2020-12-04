@@ -1,8 +1,12 @@
 package CIS3368.finalproject.controllers;
 
+import CIS3368.finalproject.models.Covid;
+import CIS3368.finalproject.models.CovidRepository;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
+import org.dom4j.rule.Mode;
 import org.json.JSONArray;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,9 +20,21 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.UUID;
 
 @Controller
 public class MainController {
+
+    @Autowired
+    CovidRepository covidRepository;
+
+    @RequestMapping("/")
+    public ModelAndView Home(){
+        ModelAndView mv = new ModelAndView("index");
+        mv.addObject("covidapi", covidRepository.findAll());
+        return mv;
+    }
 
     @RequestMapping( value = "/graph", method = RequestMethod.GET)
     public ModelAndView view(){
@@ -37,14 +53,18 @@ public class MainController {
         String coviddata = getCovidByRegion(name);
         try {
             JSONObject json = new JSONObject(coviddata);
+
             mv.addObject("total_cases", json.getJSONObject("data").getJSONObject("summary").get("total_cases").toString());
-            mv.addObject("Total Deaths", json.getJSONObject("data").getJSONObject("summary").get("active_cases").toString());
-            mv.addObject("Total_cases_today", json.getJSONObject("data").getJSONObject("change").get("total_cases").toString());
+            mv.addObject("new_cases", json.getJSONObject("data").getJSONObject("change").get("total_cases").toString());
+            mv.addObject("deaths", json.getJSONObject("data").getJSONObject("summary").get("deaths").toString());
+            mv.addObject("recovered", json.getJSONObject("data").getJSONObject("summary").get("recovered").toString());
+
 
         } catch (Exception e) {
             System.out.println(e.toString());
 
         }
+        mv.addObject("covidapi",covidRepository.findAll());
         return mv;
     }
 
@@ -74,6 +94,28 @@ public class MainController {
         }
 
 
+    }
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public ModelAndView save(@RequestParam("id") String id, @RequestParam("name") String name, @RequestParam("total_cases") String total_cases, @RequestParam("new_cases") String new_cases, @RequestParam("deaths") String deaths, @RequestParam("recovered") String recovered){
+        ModelAndView mv = new ModelAndView(("redirect:/"));
+        Covid saveCovid;
+        if (!id.isEmpty())
+        {
+            Optional<Covid> users = covidRepository.findById(id);
+            saveCovid = users.get();
+        }
+        else{
+            saveCovid = new Covid();
+            saveCovid.setId(UUID.randomUUID().toString());
+        }
+        saveCovid.setName(name);
+        saveCovid.setTotal_cases(total_cases);
+        saveCovid.setNew_cases(new_cases);
+        saveCovid.setDeaths(deaths);
+        saveCovid.setRecovered(recovered);
+        covidRepository.save(saveCovid);
+        mv.addObject("covidlist", covidRepository.findAll());
+        return mv;
     }
 
 }
