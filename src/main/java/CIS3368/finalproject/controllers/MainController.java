@@ -2,15 +2,9 @@ package CIS3368.finalproject.controllers;
 
 import CIS3368.finalproject.models.Covid;
 import CIS3368.finalproject.models.CovidRepository;
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import org.dom4j.rule.Mode;
-import org.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.json.JSONObject;
 
@@ -18,10 +12,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Controller
 public class MainController {
@@ -29,8 +20,9 @@ public class MainController {
     @Autowired
     CovidRepository covidRepository;
 
+
     @RequestMapping("/")
-    public ModelAndView Home(){
+    public ModelAndView Login(){
         ModelAndView mv = new ModelAndView("index");
         mv.addObject("covidapi", covidRepository.findAll());
         return mv;
@@ -53,11 +45,11 @@ public class MainController {
         String coviddata = getCovidByRegion(name);
         try {
             JSONObject json = new JSONObject(coviddata);
-
-            mv.addObject("total_cases", json.getJSONObject("data").getJSONObject("summary").get("total_cases").toString());
-            mv.addObject("new_cases", json.getJSONObject("data").getJSONObject("change").get("total_cases").toString());
-            mv.addObject("deaths", json.getJSONObject("data").getJSONObject("summary").get("deaths").toString());
-            mv.addObject("recovered", json.getJSONObject("data").getJSONObject("summary").get("recovered").toString());
+            mv.addObject("name", json.getJSONObject("data").getJSONObject("regions").getJSONObject(name).get("name").toString());
+            mv.addObject("total_cases", json.getJSONObject("data").getJSONObject("regions").getJSONObject(name).get("total_cases").toString());
+            mv.addObject("new_cases", json.getJSONObject("data").getJSONObject("regions").getJSONObject(name).getJSONObject("change").get("total_cases").toString());
+            mv.addObject("deaths", json.getJSONObject("data").getJSONObject("regions").getJSONObject(name).get("deaths").toString());
+            mv.addObject("recovered", json.getJSONObject("data").getJSONObject("regions").getJSONObject(name).get("recovered").toString());
 
 
         } catch (Exception e) {
@@ -70,7 +62,7 @@ public class MainController {
 
     private String getCovidByRegion(String name) {
         try {
-            URL urlForGetRequest = new URL("https://api.quarantine.country/api/v1/summary/region?region="+name+"&sub_areas=0");
+            URL urlForGetRequest = new URL("https://api.quarantine.country/api/v1/summary/latest");
 
             HttpURLConnection connection = (HttpURLConnection) urlForGetRequest.openConnection();
             connection.setRequestMethod("GET");
@@ -117,5 +109,6 @@ public class MainController {
         mv.addObject("covidlist", covidRepository.findAll());
         return mv;
     }
+
 
 }

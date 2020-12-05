@@ -46,7 +46,7 @@
         }
     </script>
     <div>
-        <a href="index.jsp">Go Back</a>
+        <a href="http://localhost:8088">Go Back</a>
     </div>
 </head>
 <body>

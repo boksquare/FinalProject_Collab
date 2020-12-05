@@ -11,24 +11,24 @@
     <h2>Please Select a Region</h2>
     <form method="get" action="/get/">
         <select name ="name">
-            <option value="USA">United States</option>
-            <option value="India">India</option>
-            <option value="China">China</option>
-            <option value="Brazil">Brazil</option>
-            <option value="Russia">Russia</option>
-            <option value="France">France</option>
-            <option value="Spain">Spain</option>
-            <option value="UK">United Kingdom</option>
-            <option value="Italy">Italy</option>
-            <option value="Argentina">Argentina</option>
-            <option value="Colombia">Colombia</option>
-            <option value="Mexico">Mexico</option>
-            <option value="Germany">Germany</option>
-            <option value="Poland">Poland</option>
-            <option value="Iran">Iran</option>
-            <option value="Peru">Peru</option>
-            <option value="South Africa">South Africa</option>
-            <option value="Ukraine">Ukraine</option>
+            <option value="usa">United States</option>
+            <option value="india">India</option>
+            <option value="china">China</option>
+            <option value="brazil">Brazil</option>
+            <option value="russia">Russia</option>
+            <option value="france">France</option>
+            <option value="spain">Spain</option>
+            <option value="uk">United Kingdom</option>
+            <option value="italy">Italy</option>
+            <option value="argentina">Argentina</option>
+            <option value="colombia">Colombia</option>
+            <option value="mexico">Mexico</option>
+            <option value="germany">Germany</option>
+            <option value="poland">Poland</option>
+            <option value="iran">Iran</option>
+            <option value="peru">Peru</option>
+            <option value="south_africa">South Africa</option>
+            <option value="ukraine">Ukraine</option>
         </select>
         <input type ="submit" value="Submit">
     </form>
@@ -58,7 +58,7 @@
         <td>${covid_table.getNew_cases()}</td>
         <td>${covid_table.getDeaths()}</td>
         <td>${covid_table.getRecovered()}</td>
-        <td>${covid_table.getUser_id()}</td>
+        <td>${covid_table.getUsername()}</td>
         </tr>
             </c:forEach>
 
@@ -71,7 +71,7 @@
             <input type="hidden" name="new_cases" value="<%=request.getParameter("new_cases")%>">
             <input type="hidden" name="deaths" value="<%=request.getParameter("deaths")%>">
             <input type="hidden" name="recovered" value="<%=request.getParameter("recovered")%>">
-            <input type="hidden" name="user_id" value="<%=request.getParameter("user_id")%>">
+            <input type="hidden" name="username" value="<%=request.getParameter("username")%>">
             <input type="submit" value="Save to Table">
         </form>
 

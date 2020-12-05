@@ -28,21 +28,21 @@ public class Covid {
     @Column(name = "recovered")
     private String recovered;
 
-    @Column(name = "user_id")
-    private String user_id;
+    @Column(name = "username")
+    private String username;
 
     public Covid(){
 
     }
 
-    public Covid(String id, String name, String total_cases, String new_cases, String deaths, String recovered, String user_id) {
+    public Covid(String id, String name, String total_cases, String new_cases, String deaths, String recovered, String username) {
         this.id = id;
         this.name = name;
         this.total_cases = total_cases;
         this.new_cases = new_cases;
         this.deaths = deaths;
         this.recovered = recovered;
-        this.user_id = user_id;
+        this.username = username;
     }
 
     public String getId() {
@@ -93,11 +93,11 @@ public class Covid {
         this.recovered = recovered;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
