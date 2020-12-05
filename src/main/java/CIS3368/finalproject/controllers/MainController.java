@@ -25,6 +25,7 @@ public class MainController {
     public ModelAndView Login(){
         ModelAndView mv = new ModelAndView("index");
         mv.addObject("covidapi", covidRepository.findAll());
+
         return mv;
     }
 
@@ -33,8 +34,7 @@ public class MainController {
         ModelAndView mv = new ModelAndView("graph");
 
         ChartDataController chartDataObject = new ChartDataController();
-        List<List<Map<Object, Object>>> chartDataList = chartDataObject.getChartList();
-        mv.addObject("dataPointsList", chartDataList);
+        mv.addObject("covidapi",covidRepository.findAll());
 
         return mv;
     }

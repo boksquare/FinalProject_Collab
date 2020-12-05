@@ -1,39 +1,23 @@
 package CIS3368.finalproject.controllers;
+import CIS3368.finalproject.models.Covid;
+import CIS3368.finalproject.models.CovidRepository;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class ChartDataController {
-
-    static Map<Object,Object> map = null;
-    static List<List<Map<Object,Object>>> list = new ArrayList<List<Map<Object,Object>>>();
-    static List<Map<Object,Object>> dataPoints1 = new ArrayList<Map<Object,Object>>();
-
-    static {
-
-        //make REST API calls here to gather data, parse data into properties, e.g.:
-
-        double usaCases = 11800000.0;
-        double brazilCases = 5980000.0;
-        double germanyCases = 867000.0;
-        double swedenCases = 210000.0;
-        double canadaCases = 316000.0;
-        double southKoreaCases = 29654.0;
-
-        map = new HashMap<Object,Object>(); map.put("label", "USA"); map.put("y", usaCases);dataPoints1.add(map);
-        map = new HashMap<Object,Object>(); map.put("label", "BRAZIL"); map.put("y", brazilCases);dataPoints1.add(map);
-        map = new HashMap<Object,Object>(); map.put("label", "GERMANY"); map.put("y", germanyCases);dataPoints1.add(map);
-        map = new HashMap<Object,Object>(); map.put("label", "SWEDEN"); map.put("y", swedenCases);dataPoints1.add(map);
-        map = new HashMap<Object,Object>(); map.put("label", "CANADA"); map.put("y", canadaCases);dataPoints1.add(map);
-        map = new HashMap<Object,Object>(); map.put("label", "SOUTH KOREA"); map.put("y", southKoreaCases);dataPoints1.add(map);
-
-        list.add(dataPoints1);
-
-
-    }
-
-    public static List<List<Map<Object, Object>>> getChartList() {
-        return list;
-    }
 }
