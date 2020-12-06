@@ -12,7 +12,7 @@
         <table>
             <tr>
                 <td>
-                    <form action="#" th:th:action="@{/login}" th:object="${user}" method="post">
+                    <form>
                         <tr>
                             <td>User ID</td>
                             <td>
@@ -24,7 +24,7 @@
                             <td><input type="password" th:field="*{password}"/></td>
                         </tr>
                         <tr>
-                            <input type="submit" value="Login">
+                            <a href="/index" style="color:black">Submit User Login</a>
                         </tr>
                     </form>
                 </td>

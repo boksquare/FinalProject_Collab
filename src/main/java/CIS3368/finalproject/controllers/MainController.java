@@ -23,6 +23,14 @@ public class MainController {
 
     @RequestMapping("/")
     public ModelAndView Login(){
+        ModelAndView mv = new ModelAndView("login");
+        mv.addObject("covidapi", covidRepository.findAll());
+
+        return mv;
+    }
+
+    @RequestMapping("/index")
+    public ModelAndView index(){
         ModelAndView mv = new ModelAndView("index");
         mv.addObject("covidapi", covidRepository.findAll());
 
