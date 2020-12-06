@@ -2,11 +2,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<style><%@include file="../css/style.css"%></style>
+
 <head>
 
-    <div>
-        <a href="http://localhost:8088">Go Back</a>
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
@@ -79,7 +78,7 @@
 
 <div id="container" style="width: 100%; height: 400px;"> </div>
 
-<table id = "tableContent">
+<table id = "tableContent" class = graph>
     <thead>
     <tr>
         <th>Region</th>
@@ -96,5 +95,8 @@
     </tbody>
 
 </table>
+<div>
+    <a href="http://localhost:8088" style="color:white">Go Back</a>
+</div>
 </body>
 </html>

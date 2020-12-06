@@ -1,0 +1,29 @@
+body {
+    margin-left: 50px;
+    background-image: url("https://i.pinimg.com/originals/d4/bf/ce/d4bfce6b5294e36e6249b2452fc11eb0.jpg");
+    color: white;
+}
+
+table.container{
+    border: 3px solid #000000;
+    background-color: white;
+    width: auto;
+    text-align: center;
+    color: black;
+}
+
+table.container td, table.container th{
+    border: 1px solid #100d0e;
+}
+
+table.graph{
+    border: 3px solid #000000;
+    background-color: white;
+    width: 25%;
+    text-align: center;
+    color: black;
+}
+
+table.graph td, table.graph th{
+    border: 1px solid #100d0e;
+}

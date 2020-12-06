@@ -14,9 +14,9 @@
                 <td>
                     <form action="#" th:th:action="@{/login}" th:object="${user}" method="post">
                         <tr>
-                            <td>Username</td>
+                            <td>User ID</td>
                             <td>
-                                <input type="text" th:field="*{username}"/>
+                                <input type="text" th:field="*{user_id}"/>
                             </td>
                         </tr>
                         <tr>

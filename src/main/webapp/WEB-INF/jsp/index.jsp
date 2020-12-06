@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>CIS 3368 Final Project</title>
+    <style><%@include file="../css/style.css"%></style>
 </head>
 
 <body>
@@ -29,7 +30,32 @@
         <option value="iran">Iran</option>
         <option value="peru">Peru</option>
         <option value="south_africa">South Africa</option>
-        <option value="ukraine">Ukraine</option>
+        <option value="turkey">Turkey</option>
+        <option value="belgium">Belgium</option>
+        <option value="indonesia">Indonesia</option>
+        <option value="iraq">Iraq</option>
+        <option value="netherlands">Netherlands</option>
+        <option value="chile">Chile</option>
+        <option value="czechia">Czechia</option>
+        <option value="romania">Romania</option>
+        <option value="bangladesh">Bangladesh</option>
+        <option value="philippines">Philippines</option>
+        <option value="pakistan">Pakistan</option>
+        <option value="canada">Canada</option>
+        <option value="morocco">Morocco</option>
+        <option value="saudi_arabia">Saudi Arabia</option>
+        <option value="switzerland">Switzerland</option>
+        <option value="israel">Israel</option>
+        <option value="portugal">Portugal</option>
+        <option value="austria">Austria</option>
+        <option value="sweden">Sweden</option>
+        <option value="hungary">Hungary</option>
+        <option value="nepal">Nepal</option>
+        <option value="jordan">Jordan</option>
+        <option value="serbia">Serbia</option>
+        <option value="ecuador">Ecuador</option>
+        <option value="kazakhstan">Kazakhstan</option>
+
     </select>
     <input type ="submit" value="Submit">
 </form>
@@ -42,7 +68,7 @@
     <h2>Recovered</h2> <%=request.getParameter("recovered")%>
 </div>
 <br>
-<table>
+<table class = container>
     <tr>
         <th>Region</th>
         <th>Total Cases</th>
@@ -77,7 +103,7 @@
 </form>
 
 <div>
-    <a href="/graph">Open Graph</a>
+    <a href="/graph" style="color:white">Open Graph</a>
 </div>
 
 </body>
