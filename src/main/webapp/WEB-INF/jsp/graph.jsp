@@ -47,7 +47,7 @@
 
                     title: {
 
-                        text: 'Units'
+                        text: 'Total Cases'
 
                     }
 

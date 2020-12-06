@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Controller
@@ -19,7 +20,6 @@ public class MainController {
 
     @Autowired
     CovidRepository covidRepository;
-
 
     @RequestMapping("/")
     public ModelAndView Login(){
@@ -88,7 +88,7 @@ public class MainController {
 
     }
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ModelAndView save(@RequestParam("id") String id, @RequestParam("name") String name, @RequestParam("total_cases") String total_cases, @RequestParam("new_cases") String new_cases, @RequestParam("deaths") String deaths, @RequestParam("recovered") String recovered){
+    public ModelAndView save(@RequestParam("id") String id, @RequestParam("name") String name, @RequestParam("date") String date, @RequestParam("total_cases") String total_cases, @RequestParam("new_cases") String new_cases, @RequestParam("deaths") String deaths, @RequestParam("recovered") String recovered){
         ModelAndView mv = new ModelAndView(("redirect:/"));
         Covid saveCovid;
         if (!id.isEmpty())
@@ -99,6 +99,12 @@ public class MainController {
         else{
             saveCovid = new Covid();
             saveCovid.setId(UUID.randomUUID().toString());
+
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            String formatted = df.format(new Date());
+
+            saveCovid.setDate(formatted);
+
         }
         saveCovid.setName(name);
         saveCovid.setTotal_cases(total_cases);

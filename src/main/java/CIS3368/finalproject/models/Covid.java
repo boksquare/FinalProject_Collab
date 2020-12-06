@@ -16,6 +16,9 @@ public class Covid {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "date")
+    private String date;
+
     @Column(name = "total_cases")
     private String total_cases;
 
@@ -35,9 +38,10 @@ public class Covid {
 
     }
 
-    public Covid(String id, String name, String total_cases, String new_cases, String deaths, String recovered, String username) {
+    public Covid(String id, String name, String date, String total_cases, String new_cases, String deaths, String recovered, String username) {
         this.id = id;
         this.name = name;
+        this.date = date;
         this.total_cases = total_cases;
         this.new_cases = new_cases;
         this.deaths = deaths;
@@ -52,6 +56,10 @@ public class Covid {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getDate() { return date; }
+
+    public void setDate(String date) { this.date = date; }
 
     public String getName() {
         return name;

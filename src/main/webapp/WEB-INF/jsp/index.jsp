@@ -71,6 +71,7 @@
 <table class = container>
     <tr>
         <th>Region</th>
+        <th>Date</th>
         <th>Total Cases</th>
         <th>New Cases</th>
         <th>Deaths</th>
@@ -81,6 +82,7 @@
     <tr>
 
         <td>${covid_table.getName()}</td>
+        <td>${covid_table.getDate()}</td>
         <td>${covid_table.getTotal_cases()}</td>
         <td>${covid_table.getNew_cases()}</td>
         <td>${covid_table.getDeaths()}</td>
@@ -94,6 +96,7 @@
 <form method="post" action="/save">
     <input type="hidden" name="id" value="">
     <input type="hidden" name="name" value= "<%=request.getParameter("name")%>">
+    <input type="hidden" name="date" value= "">
     <input type="hidden" name="total_cases" value="<%=request.getParameter("total_cases")%>">
     <input type="hidden" name="new_cases" value="<%=request.getParameter("new_cases")%>">
     <input type="hidden" name="deaths" value="<%=request.getParameter("deaths")%>">
