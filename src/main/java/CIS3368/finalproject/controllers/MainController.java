@@ -49,7 +49,7 @@ public class MainController {
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public ModelAndView get(@RequestParam("name") String name) {
-        ModelAndView mv = new ModelAndView("redirect:/");
+        ModelAndView mv = new ModelAndView("redirect:/index");
         String coviddata = getCovidByRegion(name);
         try {
             JSONObject json = new JSONObject(coviddata);
@@ -97,7 +97,7 @@ public class MainController {
     }
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView save(@RequestParam("id") String id, @RequestParam("name") String name, @RequestParam("date") String date, @RequestParam("total_cases") String total_cases, @RequestParam("new_cases") String new_cases, @RequestParam("deaths") String deaths, @RequestParam("recovered") String recovered){
-        ModelAndView mv = new ModelAndView(("redirect:/"));
+        ModelAndView mv = new ModelAndView(("redirect:/index"));
         Covid saveCovid;
         if (!id.isEmpty())
         {

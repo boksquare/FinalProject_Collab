@@ -96,7 +96,7 @@
 
 </table>
 <div>
-    <a href="http://localhost:8088" style="color:white">Go Back</a>
+    <a href="/index" style="color:white">Go Back</a>
 </div>
 </body>
 </html>
